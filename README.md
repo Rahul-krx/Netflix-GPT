@@ -1,0 +1,1 @@
+echo "# Netflix-GPT" >> README.md
