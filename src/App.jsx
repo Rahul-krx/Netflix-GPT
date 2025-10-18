@@ -1,11 +1,11 @@
+import Body from "./components/Body";
 
 function App() {
-  
   return (
-    <>
-      <div className="text-2xl font-bold bg-red-300 text-blue-500 ">namaste React!</div>  
-    </>
-  )
+    <div>
+      <Body />
+    </div>
+  );
 }
 
 export default App;
