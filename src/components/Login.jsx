@@ -5,6 +5,8 @@ import { checkValidData } from "../utils/validatedata";
 const Login = () => {
   const [isSignInForm, setisSignInForm] = useState(true);
   const [errormessage, seterrorMessage] = useState(null);
+
+
   const email = useRef(null);
   const password = useRef(null);
 
@@ -14,7 +16,7 @@ const Login = () => {
     console.log(email.current.value);
     console.log(password.current.value);
     
-   const message = checkValidData(email.current.value, password.current.value);
+   const message = checkValidData( email.current.value, password.current.value);
    seterrorMessage(message);
 
   }
@@ -38,8 +40,9 @@ const Login = () => {
         </h2>
         {!isSignInForm && (
           <input
+        
             type="text"
-            placeholder="Full Name"
+            placeholder="Full Name" required
             className="w-full p-3 my-4 bg-gray-900 border-1 border-gray-500 rounded-md"
           />
         )}
