@@ -1,25 +1,43 @@
-import React, { useRef, useState, } from "react";
+import React, { use, useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validatedata";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignInForm, setisSignInForm] = useState(true);
   const [errormessage, seterrorMessage] = useState(null);
 
-
   const email = useRef(null);
   const password = useRef(null);
 
-
-  const handleBtnClick = () =>{
-    
+  const handleBtnClick = () => {
     console.log(email.current.value);
     console.log(password.current.value);
-    
-   const message = checkValidData( email.current.value, password.current.value);
-   seterrorMessage(message);
 
-  }
+    const message = checkValidData(email.current.value, password.current.value);
+    seterrorMessage(message);
+
+    if (message) return;
+
+    if (!isSignInForm) {
+      // sign up logic
+      createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          seterrorMessage(errorCode + "-" + errorMessage);
+        });
+    } else {
+      // sign in Logic
+    }
+  };
+
   const toggleSignInForm = () => {
     setisSignInForm(!isSignInForm);
   };
@@ -34,26 +52,29 @@ const Login = () => {
         />
       </div>
 
-      <form onSubmit={(e) => e.preventDefault()} className="w-4/12 bg-black text-white absolute p-12 my-36  mx-auto right-0 left-0 rounded-lg opacity-90">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="w-4/12 bg-black text-white absolute p-12 my-36  mx-auto right-0 left-0 rounded-lg opacity-90"
+      >
         <h2 className="text-3xl font-bold my-2 ">
           {isSignInForm ? "Sign In" : "Sign up"}
         </h2>
         {!isSignInForm && (
           <input
-        
             type="text"
-            placeholder="Full Name" required
+            placeholder="Full Name"
+            required
             className="w-full p-3 my-4 bg-gray-900 border-1 border-gray-500 rounded-md"
           />
         )}
         <input
-         ref={email}
+          ref={email}
           type="text"
           placeholder="Email/Phone no."
           className="w-full p-3 my-4 bg-gray-900 border-1 border-gray-500 rounded-md"
         />
         <input
-        ref={password}
+          ref={password}
           type="password"
           placeholder="Password"
           className="w-full p-3 my-4 bg-gray-900 border-1 border-gray-500 rounded-md"
@@ -66,12 +87,16 @@ const Login = () => {
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
 
-        <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
+        <p className="py-4 " onClick={toggleSignInForm}>
           {isSignInForm ? (
             <span style={{ color: "rgba(255,255,255,0.75)" }}>
               New to Netflix?
               <span
-                style={{ color: "rgba(255,255,255,0.95)", fontWeight: 600 }}
+                style={{
+                  color: "rgba(255,255,255,0.95)",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                }}
               >
                 {" "}
                 Sign up now.
@@ -81,7 +106,11 @@ const Login = () => {
             <span style={{ color: "rgba(255,255,255,0.75)" }}>
               Already registered?
               <span
-                style={{ color: "rgba(255,255,255,0.95)", fontWeight: 600 }}
+                style={{
+                  color: "rgba(255,255,255,0.95)",
+                  fontWeight: 600,
+                  cursor: "pointer",
+                }}
               >
                 {" "}
                 Sign In now.
