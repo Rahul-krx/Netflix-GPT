@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 const Login = () => {
   const [isSignInForm, setisSignInForm] = useState(true);
   const [errormessage, seterrorMessage] = useState(null);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const name = useRef(null);
@@ -51,7 +51,7 @@ const Login = () => {
               dispatch(
                 addUser({ uid: uid, email: email, displayName: displayName })
               );
-              navigate("/browse");
+              // navigate("/browse");
             })
             .catch((error) => {
               seterrorMessage(error.message);
@@ -76,7 +76,7 @@ const Login = () => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          navigate("/browse");
+          // navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
