@@ -1,6 +1,8 @@
 
 import Header from './Header';
 import useNowPlayingMovies from './hooks/useNowPlayingMovies';
+import MainContainer from './MainContainer';
+import  SecondaryContainer  from './SecondaryContainer';
 
 export const Browse = () => {
 
@@ -9,7 +11,9 @@ export const Browse = () => {
   return (
     <div>
       <Header/>
-      <p className='absolute mt-24 font-bold'>browse Page!!</p>
+
+      <MainContainer/>
+      <SecondaryContainer/>
       </div>
   )
 }
