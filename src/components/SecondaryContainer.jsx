@@ -9,8 +9,8 @@ import { useSelector } from 'react-redux';
     <div className='bg-black'>
       <div className='-mt-50 relative z-20'>
     <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/>
-    <MovieList title={"Most Popular"} movies={movies.nowPlayingMovies}/>
-    <MovieList title={"Latest Released"} movies={movies.nowPlayingMovies}/>
+    <MovieList title={"Most Popular"} movies={movies.nowPopularMovies}/>
+    <MovieList title={"Top Rated"} movies={movies.nowTopRatedMovies}/>
     <MovieList title={"Horror Movies"} movies={movies.nowPlayingMovies}/>
     <MovieList title={"Trending On Netflix"} movies={movies.nowPlayingMovies}/>
     </div>
