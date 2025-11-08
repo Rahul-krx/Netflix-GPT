@@ -11,8 +11,8 @@ import { useSelector } from 'react-redux';
     <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/>
     <MovieList title={"Most Popular"} movies={movies.nowPopularMovies}/>
     <MovieList title={"Top Rated"} movies={movies.nowTopRatedMovies}/>
-    <MovieList title={"Horror Movies"} movies={movies.nowPlayingMovies}/>
-    <MovieList title={"Trending On Netflix"} movies={movies.nowPlayingMovies}/>
+    <MovieList title={"Popular TV Series"} movies={movies.nowPopularTvSeries}/>
+    <MovieList title={"Upcoming Movies"} movies={movies.nowUpcomingMovies}/>
     </div>
     </div>
   )

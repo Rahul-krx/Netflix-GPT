@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IMG_CDN_URL } from "../utils/constants";
 
-const MovieCard = ({ posterPath, title, overview }) => {
+const MovieCard = ({ posterPath, title, overview, name }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ const MovieCard = ({ posterPath, title, overview }) => {
       {/* Card Wrapper */}
       <div
         className={`relative rounded-md overflow-hidden shadow-md transition-transform duration-300 ease-in-out ${
-          hovered ? "scale-125 z-30" : "scale-100 z-10"
+          hovered ? "scale-125 z-30 rounded-lg" : "scale-100 z-10"
         }`}
         style={{ transformOrigin: "center center" }}
       >
@@ -31,7 +31,7 @@ const MovieCard = ({ posterPath, title, overview }) => {
           <div className="absolute bottom-0 left-0 w-full h-[80%] bg-gradient-to-b from-transparent via-black/70 to-black text-white p-3 flex flex-col justify-end rounded-b-md transition-all duration-300">
             <div className="mb-3">
               <h3 className="font-semibold text-sm mb-1 line-clamp-1">
-                {title || "Untitled"}
+                {title || name || "Untitled"}
               </h3>
               {overview && (
                 <p className="text-xs opacity-90 line-clamp-2 mb-2">

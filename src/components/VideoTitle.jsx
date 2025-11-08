@@ -1,9 +1,9 @@
 import React from "react";
 
-const VideoTitle = ({ title, overview }) => {
+const VideoTitle = ({ title, overview, name }) => {
   return (
     <div className=" w-fit aspect-video pt-[18%] px-24 absolute text-white bg-gradient-to-r from-black ">
-      <h1 className="font-bold text-6xl">{title}</h1>
+      <h1 className="font-bold text-6xl"> {title || name}</h1>
       <p className="text-lg w-1/4 py-6 line-clamp-4">{overview}</p>
 
       <div className="flex">
