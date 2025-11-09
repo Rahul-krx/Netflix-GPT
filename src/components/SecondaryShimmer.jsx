@@ -1,9 +1,9 @@
 import React from "react";
 
-export const SecondaryShimmer = ({ items = 8, cardWidth = 200, cardHeight = 300 }) => {
+export const SecondaryShimmer = ({ items = 8, cardWidth = 220, cardHeight = 280 }) => {
   return (
     <div className="px-10 mb-10">
-      <div className="h-6 w-1/4 bg-gray-500 rounded-md mb-4 animate-pulse"></div>
+      <div className="h-6 mt-24 w-1/4 bg-gray-500 rounded-md mb-4 animate-pulse"></div>
       <div className="flex overflow-x-scroll space-x-4">
         {Array(items)
           .fill("")
